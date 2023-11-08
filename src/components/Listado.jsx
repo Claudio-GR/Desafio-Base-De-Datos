@@ -6,30 +6,23 @@ const List_Rendering= ({Data_Base}) => {
       <Table striped bordered hover>
         <thead>
           <tr>
-            <th>#</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Username</th>
+            <th>Nombre</th>
+            <th>Correo</th>
+            <th>Edad</th>
+            <th>Cargo</th>
+            <th>Teléfono</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td colSpan={2}>Larry the Bird</td>
-            <td>@twitter</td>
-          </tr>
+            {Data_Base.map((Person) =>(
+                <tr>
+                    <td>{Person.nombre}</td>
+                    <td>{Person.correo}</td>
+                    <td>{Person.edad}</td>
+                    <td>{Person.cargo}</td>
+                    <td>{Person.telefono}</td>
+                </tr>
+            ))}
         </tbody>
       </Table>
     );

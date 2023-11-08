@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './App.css'
+import List_Rendering from './components/Listado'
 import { BaseColaboradores } from './Lista'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
@@ -10,9 +11,10 @@ function App() {
   return (
     <>
       <body>
-        <Formulario 
+        <List_Rendering Data_Base={BaseColaboradores}/>
+        {/* <Formulario 
         setError={setError}
-        error={error}/>
+        error={error}/> */}
       </body>
     </>
   )
