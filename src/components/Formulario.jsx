@@ -1,111 +1,52 @@
-import { useState } from "react";
+import React from 'react'
+import Form from 'react-bootstrap/Form';
+import { useState } from 'react';
 
+const Formulario = () => {
+        const [baseColaboradores, setBaseColaboradores] = useState({
+            id: "",
+            nombre: "",
+            correo: "",
+            edad: "",
+            cargo: "",
+            telefono: "",
+        })
+        const [error, setError] = useState(false);
 
-const Formulario = ({setError}) => {
-    const [formData, SetFormData] = useState({
-        name:"",
-        email:"",
-        password:"",
-        confPass:"",
-    })
-
-    const DataValidating=(e)=>{
-        e.preventDefault()
-        const {name, email, password, confPass} =formData
-        const DataValidation = !name || !email || !password|| !confPass
-        const PassValidation = password !== confPass
-        
-
-DataValidation ? 
-
-setError({
-        error: true,
-        msg: "Todos los campos son obligatorios, favor rellenar todos los campos solicitados",
-        color: "warning"
-}) 
-:setError({ 
-        error: false,
-        msg: "Datos ingresados exitosamente",
-        color: "success"
-});
-
-if (PassValidation){
-    setError({
-        error: true,
-        msg: "Contraseñas no coinciden, por favor intentelo de nuevo",
-        color: "danger"
-    });
-    return
-}
-SetFormData({
-        name:"",
-        email:"",
-        password:"",
-        confPass:"",
-});
-
-    }
- 
+        const enviarForm = (e) =>{
+            e.preventDefault()
+            const {nombre, correo, edad, cargo, telefono}= baseData
+            if (nombre.trim()=='' || correo.trim()=='' || edad.trim()=='' || cargo.trim()=='' || telefono.trim()==''){
+                setError(true)
+                return
+            }
+        }
     
-const handleChange = (e)=>{
-    SetFormData({...formData, [e.target.name] : e.target.value})
-
-}
-
   return (
-    <>
-      <form className="formulario" onSubmit={(e)=>DataValidating(e)} >
-
-        <div className="form-group">
-          <input
-            type="text"
-            name="name"
-            className="form-control"
-            placeholder="Name"
-            onChange={handleChange}
-            value={formData.name}
-          />
-        </div>
-
-        <div className="form-group">
-          <input
-            type="email"
-            name="email"
-            className="form-control"
-            placeholder="Correo"
-            onChange={handleChange}
-            value={formData.email}
-          />
-        </div>
-
-        <div className="form-group">
-          <input
-            type="password"
-            name="password"
-            className="form-control"
-            placeholder="contraseña"
-            onChange={handleChange}
-            value={formData.password}
-          />
-        </div>
-
-        <div className="form-group">
-          <input
-            type="password"
-            name="confPass"
-            className="form-control"
-            placeholder="confirmar contraseña"
-            onChange={handleChange}
-            value={formData.confPass}
-          />
-        </div>
-
-        <button type="submit" className="btn btn-primary mt-4">
-          Registrarse
+    <div>
+        <h1 className="text-center mb-5">Agregar colaborador</h1>
+    <Form onSubmit={enviarForm}> 
+      <Form.Group className="mb-3" controlId="exampleForm.ControlInput1" >
+        <Form.Control type="text" name="nombre" placeholder="Nombre del colaborador" />
+      </Form.Group>
+      <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+        <Form.Control type="email" name="correo" placeholder="Email de colaborador" />
+      </Form.Group>
+      <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+        <Form.Control type="text" name="edad" placeholder="Edad de colaborador" />
+      </Form.Group>
+      <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+        <Form.Control type="text" name="cargo" placeholder="Cargo del colaborador" />
+      </Form.Group>
+      <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+        <Form.Control type="number" name="telefono" placeholder="Teléfono del colaborador" />
+      </Form.Group>
+      <button type="submit" className="btn btn-primary mt-1">
+          Agregar colaborador
         </button>
-      </form>
 
-    </>
+    </Form>
+    </div>
   )
 }
 

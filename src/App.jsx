@@ -24,9 +24,9 @@ function App() {
           Data_Base={Rendering_Data_Base}  
           Filtered_Data={Filtered_Data_Base} 
         />
-        {/* <Formulario 
+        <Formulario 
         setError={setError}
-        error={error}/>*/}
+        error={error}/>
       </body>
     </>
   )
