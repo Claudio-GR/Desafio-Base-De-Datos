@@ -10,25 +10,23 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 
 function App() {
   const [error, setError] = useState("")
-  const [filter, setFilter] = useState(false)
-  const Rendering_Data_Base=[]
-  const Filtered_Data_Base=[]
-  if(filter==true){
-    Rendering_Data_Base=Filtered_Data_Base
-  }
-  else{
-    Rendering_Data_Base=BaseColaboradores
-  }
-
+  const [Rendering_Data_Base, SetRendering_Data_Base]=useState(BaseColaboradores)
+  const [Filtered_Data_Base, Set_Filtered_Data]=useState(Rendering_Data_Base)
+  
   return (
     <>
       <body>
-        <Search_Person filer={filter} setFilter={setFilter}/>
-        <List_Rendering Data_Base={Rendering_Data_Base} />
-        <Formulario 
+        <Search_Person 
+          Rendering_Data_Base={Rendering_Data_Base} 
+          Set_Filtered_Data={Set_Filtered_Data}
+        />
+        <List_Rendering 
+          Data_Base={Rendering_Data_Base}  
+          Filtered_Data={Filtered_Data_Base} 
+        />
+        {/* <Formulario 
         setError={setError}
-        error={error}/>
-        <Alert error={error}/>
+        error={error}/>*/}
       </body>
     </>
   )

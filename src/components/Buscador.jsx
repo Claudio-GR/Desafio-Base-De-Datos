@@ -3,31 +3,33 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { BaseColaboradores } from '../Lista';
 
-const Search_Person = ({filter, setFilter}) => {
+const Search_Person = ({Rendering_Data_Base, Set_Filtered_Data}) => {
 
     const Searching=(e)=>{
         e.preventDefault()
-        setFilter(true)
-        Filtered_Data_Base=BaseColaboradores.filter(
-            (Person) => Person.nombre==e.Search_Text
-            )
+        const Text_Search=e.target.value.toLowerCase()
+        const result=Rendering_Data_Base.filter(
+            (Person) => 
+            Person.nombre.toLowerCase().includes(Text_Search) || 
+            Person.correo.toLowerCase().includes(Text_Search) ||
+            Person.edad.includes(Text_Search) ||
+            Person.cargo.toLowerCase().includes(Text_Search) ||
+            Person.telefono.toLowerCase().includes(Text_Search)
+            );
+          Set_Filtered_Data(result)
     }
 
     return(
-        <Form inline onSubmit={(e)=>Searching(e)}>
+        <Form inline>
         <Row>
           <Col xs="auto">
             <Form.Control
               type="text"
               placeholder="Search"
               className=" mr-sm-2"
-              value={Search_Text}
+              onChange={Searching}
             />
-          </Col>
-          <Col xs="auto">
-            <Button type="submit">Submit</Button>
           </Col>
         </Row>
       </Form>

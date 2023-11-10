@@ -1,7 +1,7 @@
 import Table from 'react-bootstrap/Table';
 
 
-const List_Rendering = ({Data_Base}) => {
+const List_Rendering = ({Data_Base, Filtered_Data}) => {
     return (
       <Table striped bordered hover>
         <thead>
@@ -14,13 +14,13 @@ const List_Rendering = ({Data_Base}) => {
           </tr>
         </thead>
         <tbody>
-            {Data_Base.map((Person) =>(
-                <tr>
-                    <td key={Person.id}>{Person.nombre}</td>
-                    <td key={Person.id}>{Person.correo}</td>
-                    <td key={Person.id}>{Person.edad}</td>
-                    <td key={Person.id}>{Person.cargo}</td>
-                    <td key={Person.id}>{Person.telefono}</td>
+            {Filtered_Data.map((Person) =>(
+                <tr className="aligne-middle" key={Person.id}>
+                    <td>{Person.nombre}</td>
+                    <td>{Person.correo}</td>
+                    <td>{Person.edad}</td>
+                    <td>{Person.cargo}</td>
+                    <td>{Person.telefono}</td>
                 </tr>
             ))}
         </tbody>
