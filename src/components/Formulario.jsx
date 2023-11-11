@@ -1,42 +1,72 @@
 import React from 'react'
 import Form from 'react-bootstrap/Form';
 import { useState } from 'react';
+import Alert from './Alerta';
+import { v4 as uuidv4 } from "uuid"
 
-const Formulario = () => {
-        const [baseColaboradores, setBaseColaboradores] = useState({
-            id: "",
-            nombre: "",
-            correo: "",
-            edad: "",
-            cargo: "",
-            telefono: "",
-        })
-        // const [error, setError] = useState(false);
+const Formulario = ({setError, nuevaBase }) => {
+  
+  const [listaPersona, setListaPersona] = useState(nuevaBase) 
+  const [nombre, setNombre]=useState('')
+  const [correo, setCorreo]=useState('')
+  const [edad, setEdad]=useState('')
+  const [cargo, setCargo]=useState('')
+  const [telefono, setTelefono]=useState('') 
+  console.log(listaPersona)
+  const capturaNombre= (e)=>{
+    setNombre(e.target.value)
+  }
+  const capturaCorreo= (e)=>{
+    setCorreo(e.target.value)
+  }
+  const capturaEdad= (e)=>{
+    setEdad(e.target.value)
+  }
+  const capturaCargo= (e)=>{
+    setCargo(e.target.value)
+  }
+  const capturaTelefono= (e)=>{
+    setTelefono(e.target.value)
+  }
+  const enviar =(e)=>{
+    e.preventDefault()
+    if(nombre.trim()===''||correo.trim()===''||edad.trim()===''||cargo.trim()===''||telefono.trim()===''){
+      setError({
+        error: true,
+        msg: "Todos los campos son obligatorios, favor rellenar todos los campos solicitados",
+}) 
+    }else{
+      setError({ 
+        error: false,
+        msg: "Datos ingresados exitosamente",
+});
+    }
 
-        const enviarForm = (e) =>{
-            e.preventDefault()
-            
-            setBaseColaboradores({...baseColaboradores, [e.target.name] : e.target.value})
-            console.log(baseColaboradores)
-            // const {nombre, correo, edad, cargo, telefono}= baseData
-            // if (nombre.trim()=='' || correo.trim()=='' || edad.trim()=='' || cargo.trim()=='' || telefono.trim()==''){
-            //     setError(true)
-            //     return
-            // }
+    setListaPersona([
+      ...listaPersona, {
+      id:uuidv4(),
+      nombre:nombre,
+      correo:correo,
+      edad:edad,
+      cargo:cargo,
+      telefono:telefono,
+    } ])
+    
         }
+       
     
   return (
   <>
         <h1 className="text-center mb-5">Agregar colaborador</h1>
 
-        <form className="formulario" onSubmit={(e)=>enviarForm(e)} >
+        <form className="formulario" onSubmit={(e)=>enviar(e)} >
      <div className="form-group">
      <input
         type="text" 
         name="nombre" 
         placeholder="Nombre del colaborador"
-        onChange={enviarForm} 
-        value={baseColaboradores.nombre}
+        onChange={capturaNombre} 
+        value={nombre}
         />
         </div>
 
@@ -45,8 +75,8 @@ const Formulario = () => {
         type="email" 
         name="correo" 
         placeholder="Email de colaborador"
-        onChange={enviarForm}
-        value={baseColaboradores.correo}
+        onChange={capturaCorreo}
+        value={correo}
         />
 
         </div>
@@ -55,8 +85,8 @@ const Formulario = () => {
         type="number" 
         name="edad" 
         placeholder="Edad de colaborador"
-        onChange={enviarForm}
-        value={baseColaboradores.edad}
+        onChange={capturaEdad}
+        value={edad}
         />
         </div>
 
@@ -65,8 +95,8 @@ const Formulario = () => {
         type="text" 
         name="cargo" 
         placeholder="Cargo del colaborador"
-        onChange={enviarForm}
-        value={baseColaboradores.cargo}
+        onChange={capturaCargo}
+        value={cargo}
         />
         </div>
 
@@ -75,8 +105,8 @@ const Formulario = () => {
         type="number" 
         name="telefono" 
         placeholder="Teléfono del colaborador"
-        onChange={enviarForm}
-        value={baseColaboradores.telefono}
+        onChange={capturaTelefono}
+        value={telefono}
         />
         </div>
 
@@ -86,37 +116,8 @@ const Formulario = () => {
           Agregar colaborador
         </button>
 
-        
-        
-{/* 
-      <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-        <Form.Control 
-        type="email" 
-        name="correo" 
-        placeholder="Email de colaborador" />
-      </Form.Group>
-
-      <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-        <Form.Control 
-        type="text" 
-        name="edad" 
-        placeholder="Edad de colaborador" />
-      </Form.Group>
-
-      <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-        <Form.Control 
-        type="text" 
-        name="cargo" 
-        placeholder="Cargo del colaborador" />
-      </Form.Group>
-
-      <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-        <Form.Control 
-        type="number" 
-        name="telefono" 
-        placeholder="Teléfono del colaborador" />
-      </Form.Group> */}
       </form>
+
       </>
   )
 }

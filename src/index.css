@@ -67,3 +67,16 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+.formulario {
+  padding: 1rem 0 1rem 0;
+ 
+}
+
+input{
+  border-radius: 5%;
+
+}
+.form-group{
+  padding: 1rem 0 0 0;
+ 
+}
