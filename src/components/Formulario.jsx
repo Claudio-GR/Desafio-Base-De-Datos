@@ -1,18 +1,15 @@
 import React from 'react'
 import Form from 'react-bootstrap/Form';
 import { useState } from 'react';
-import Alert from './Alerta';
 import { v4 as uuidv4 } from "uuid"
 
-const Formulario = ({setError, nuevaBase }) => {
+const Formulario = ({setError, Set_Filtered_Data, SetRendering_Data_Base, Rendering_Data_Base, Filtered_Data_Base }) => {
   
-  const [listaPersona, setListaPersona] = useState(nuevaBase) 
   const [nombre, setNombre]=useState('')
   const [correo, setCorreo]=useState('')
   const [edad, setEdad]=useState('')
   const [cargo, setCargo]=useState('')
   const [telefono, setTelefono]=useState('') 
-  console.log(listaPersona)
   const capturaNombre= (e)=>{
     setNombre(e.target.value)
   }
@@ -42,8 +39,17 @@ const Formulario = ({setError, nuevaBase }) => {
 });
     }
 
-    setListaPersona([
-      ...listaPersona, {
+    Set_Filtered_Data([
+      ...Filtered_Data_Base, {
+      id:uuidv4(),
+      nombre:nombre,
+      correo:correo,
+      edad:edad,
+      cargo:cargo,
+      telefono:telefono,
+    } ])
+    SetRendering_Data_Base([
+      ...Rendering_Data_Base, {
       id:uuidv4(),
       nombre:nombre,
       correo:correo,

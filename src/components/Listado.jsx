@@ -1,7 +1,7 @@
 import Table from 'react-bootstrap/Table';
 
 
-const List_Rendering = ({Data_Base, Filtered_Data}) => {
+const List_Rendering = ({Filtered_Data}) => {
     return (
       <Table striped bordered hover>
         <thead>
