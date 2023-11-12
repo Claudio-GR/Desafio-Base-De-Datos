@@ -1,13 +1,11 @@
 import React from 'react'
 import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 const Search_Person = ({Rendering_Data_Base, Set_Filtered_Data}) => {
 
     const Searching=(e)=>{
-        e.preventDefault()
         const Text_Search=e.target.value.toLowerCase()
         const result=Rendering_Data_Base.filter(
             (Person) => 
@@ -18,6 +16,7 @@ const Search_Person = ({Rendering_Data_Base, Set_Filtered_Data}) => {
             Person.telefono.toLowerCase().includes(Text_Search)
             );
           Set_Filtered_Data(result)
+        
     }
 
     return(

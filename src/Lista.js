@@ -27,3 +27,4 @@ export const BaseColaboradores = [
         filtrado: false
     },
 ]
+
