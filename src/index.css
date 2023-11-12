@@ -71,6 +71,9 @@ button:focus-visible {
   padding: 1rem 0 1rem 0;
  
 }
+.form-text, h1{
+  font-size: 4vh;
+}
 
 input{
   border-radius: 5%;
@@ -79,4 +82,7 @@ input{
 .form-group{
   padding: 1rem 0 0 0;
  
+}
+.container{
+  margin-top: 6rem;
 }
