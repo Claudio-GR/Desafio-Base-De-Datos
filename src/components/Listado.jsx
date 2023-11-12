@@ -16,7 +16,7 @@ const List_Rendering = ({Filtered_Data}) => {
         <tbody>
             {Filtered_Data.map((Person) =>(
                 <tr className="aligne-middle" key={Person.id}>
-                    <td>{Person.id}</td>
+                    
                     <td>{Person.nombre}</td>
                     <td>{Person.correo}</td>
                     <td>{Person.edad}</td>

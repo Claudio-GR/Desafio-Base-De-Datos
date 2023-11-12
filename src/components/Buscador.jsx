@@ -22,7 +22,8 @@ const Search_Person = ({Rendering_Data_Base, Set_Filtered_Data}) => {
     return(
         <Form inline>
         <Row>
-          <Col xs="auto">
+          <Col xs="auto mb-3">
+            <div><h1> Lista Colaboradores</h1></div>
             <Form.Control
               type="text"
               placeholder="Search"
